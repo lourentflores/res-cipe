@@ -5,7 +5,6 @@ router.get('/:id/allresumes', dashController.getResumes, (req, res) => {
   res.status(200).json(res.locals.resume);
 });
 
-
 router.post('/:id/resume', dashController.postResume, (req, res) => {
   res.status(200).send();
 });
