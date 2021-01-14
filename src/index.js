@@ -4,9 +4,11 @@ import { ChakraProvider } from '@chakra-ui/react';
 import App from './App';
 import 'react-dropzone-uploader/dist/styles.css';
 
+
+
 ReactDOM.render(
   <ChakraProvider>
-    <App />
+    <App/>
   </ChakraProvider>,
   document.getElementById('root')
 );

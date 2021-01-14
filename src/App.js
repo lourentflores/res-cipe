@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Dashboard from './components/Dashboard';
-import LoginContainer from './components/test/LoginContainer';
+import LoginContainer from './components/LoginContainer';
 
 export default function App() {
   const [state, setState] = useState({ userId: null, isLoggedIn: false });

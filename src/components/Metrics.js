@@ -60,7 +60,7 @@ export default function Metrics({ applications }) {
         <ModalContent>
           <ModalHeader>Metrics</ModalHeader>
           <ModalCloseButton />
-          <Table variant='striped' colorScheme='teal'>
+          <Table variant='striped' colorScheme='purple'>
             <TableCaption>
               **Interview requests+ vs submitted applications
             </TableCaption>

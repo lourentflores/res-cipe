@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box, Image, Button, Center, useDisclosure } from '@chakra-ui/react';
-import Login from '../Login';
-import Signup from '../Signup';
+import Login from './Login';
+import Signup from './Signup';
 
 export default function LoginContainer({ setState }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -15,6 +15,7 @@ export default function LoginContainer({ setState }) {
         borderWidth="1px"
         borderRadius="lg"
         overflow="hidden"
+        boxShadow="base"
       >
         <Login setState={setState} />
       </Box>

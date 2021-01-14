@@ -8,6 +8,9 @@ import {
   FormControl,
   FormLabel,
   Select,
+  Flex,
+  Spacer,
+  Heading,
 } from '@chakra-ui/react';
 import { StarIcon, DeleteIcon } from '@chakra-ui/icons';
 
@@ -52,11 +55,11 @@ export default function ApplicationCard(props) {
   }
 
   return (
-    <Box maxW='sm' borderWidth='1px' borderRadius='lg' overflow='hidden'>
+    <Box bg="gray.50" boxShadow="base" maxW='sm' borderWidth='1px' borderRadius='lg' overflow='hidden'>
       {/* <Image src={props.imageUrl} alt={props.imageAlt} /> */}
 
-      <Box p='6'>
-        <Box
+      <Box p='6' padding='1rem' flexDirection='row' minWidth="300px">
+        <Flex
           mt='1'
           fontWeight='semibold'
           as='h4'
@@ -64,25 +67,29 @@ export default function ApplicationCard(props) {
           isTruncated
           d='flex'
         >
-          {props.company}
+          <Heading padding='5px'>{props.company}</Heading>
+          <Spacer />
           <IconButton
             icon={<DeleteIcon />}
             background='none'
             key={`delete${props.id}`}
             onClick={() => deleteApplication()}
           />
-        </Box>
-        <Box d='flex' alignItems='baseline'>
-          <Badge borderRadius='full' px='2' colorScheme='teal'>
-            {props.resumeLabel}
-          </Badge>
-        </Box>
+        </Flex>
 
-        <Box>
-          <Link href={props.link} isExternal>
-            Original Listing
-          </Link>
-        </Box>
+        <Flex>
+          <Box padding='5px' flexDirection='column'>
+            <Link href={props.link} isExternal>
+              Original Listing
+            </Link>
+          </Box>
+          <Spacer />
+          <Box d='flex' alignItems='baseline'>
+            <Badge borderRadius='full' px='2' colorScheme='purple'>
+              {props.resumeLabel}
+            </Badge>
+          </Box>
+        </Flex>
 
         <FormControl id='status'>
           <Select
@@ -110,7 +117,7 @@ export default function ApplicationCard(props) {
             .map((_, i) => (
               <IconButton
                 key={`star${i}`}
-                color={i < rating ? 'teal.500' : 'gray.300'}
+                color={i < rating ? 'purple.500' : 'gray.300'}
                 background='none'
                 size='sm'
                 icon={<StarIcon />}

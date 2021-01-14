@@ -1,9 +1,10 @@
 import React from 'react';
-import { Button, useDisclosure } from '@chakra-ui/react';
+import { Button, useDisclosure, VStack } from '@chakra-ui/react';
 import AddApplication from './AddApplication';
 import AddResume from './AddResume';
 import ApplicationCard from './ApplicationCard';
 import Metrics from './Metrics';
+import {Grid, GridItem, Image, Heading, Stack, Center} from '@chakra-ui/react';
 
 export default function Dashboard({ userId }) {
   const [applications, setApplications] = React.useState([]);
@@ -75,24 +76,38 @@ export default function Dashboard({ userId }) {
 
   return (
     <div>
-      {applicationCards}
-
-      <AddApplication
-        userId={userId}
-        resumes={resumes}
-        fetchAllApplications={fetchAllApplications}
-      />
-      <Button onClick={onOpen}>Add Resume</Button>
-      <AddResume
-        userId={userId}
-        isOpen={isOpen}
-        onClose={onClose}
-        fetchAllResumes={fetchAllResumes}
-      />
-      <Metrics
-        applications={applications}
-        fetchAllApplications={fetchAllApplications}
-      />
+      <Center>
+      <Heading mt="2">
+        <Image id="logo" src="../../assets/rescipelogo.png" alt="Rescipe Logo" htmlWidth={1000}/>
+      </Heading>
+      </Center>
+      <Grid h="auto" templateColumns="repeat(5, 1fr)" gap={4}>
+        <GridItem rowSpan="auto" bg="gray.100">
+          <Stack direction="column">
+          <AddApplication
+            userId={userId}
+            resumes={resumes}
+            fetchAllApplications={fetchAllApplications}
+          />
+          <Button onClick={onOpen}>Add Resume</Button>
+          <AddResume
+            userId={userId}
+            isOpen={isOpen}
+            onClose={onClose}
+            fetchAllResumes={fetchAllResumes}
+          />
+          <Metrics
+            applications={applications}
+            fetchAllApplications={fetchAllApplications}
+          />
+          </Stack>
+        </GridItem>
+        <GridItem rowSpan={2} colSpan={1} >
+          <Stack direction={"row"} spacing={8}>
+          {applicationCards}
+          </Stack>
+        </GridItem>
+      </Grid>
     </div>
   );
 }
