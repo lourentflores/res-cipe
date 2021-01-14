@@ -26,7 +26,12 @@ const Preview = ({ meta }) => {
   );
 };
 
-export default function AddResume({ isOpen, onClose, userId }) {
+export default function AddResume({
+  isOpen,
+  onClose,
+  userId,
+  fetchAllResumes,
+}) {
   // state for resume label
   const [resumeLabel, setResumeLabel] = useState('');
 
@@ -58,10 +63,14 @@ export default function AddResume({ isOpen, onClose, userId }) {
     })
       .then((response) => {
         // clean up
-        // remove all the finals from the dropzone after upload
-        allFiles.forEach((f) => f.remove());
-        // closes modal
-        onClose();
+        if (response.ok) {
+          // remove all the finals from the dropzone after upload
+          allFiles.forEach((f) => f.remove());
+          // fetch new resumes
+          fetchAllResumes();
+          // closes modal
+          onClose();
+        }
       })
       .catch((error) => console.log(error));
   };
@@ -72,10 +81,10 @@ export default function AddResume({ isOpen, onClose, userId }) {
       <ModalContent>
         <ModalHeader>Add Resume</ModalHeader>
         <ModalCloseButton />
-        <FormControl id="resume-nickname" isRequired>
+        <FormControl id='resume-nickname' isRequired>
           <Input
             onChange={(e) => setResumeLabel(e.target.value)}
-            placeholder="Resume Nickname"
+            placeholder='Resume Nickname'
           />
         </FormControl>
 
@@ -83,7 +92,7 @@ export default function AddResume({ isOpen, onClose, userId }) {
           getUploadParams={getUploadParams}
           onSubmit={handleSubmit}
           PreviewComponent={Preview}
-          inputContent="Drop Files"
+          inputContent='Drop Files'
           disabled={(files) =>
             files.some((f) =>
               ['preparing', 'getting_upload_params', 'uploading'].includes(

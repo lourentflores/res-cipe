@@ -1,15 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const passport = require('passport')
-const LocalStrategy = require('passport-local').Strategy;
+const passport = require('passport');
 
-const userController = require('../controllers/userController');
-
-
-router.post('/', passport.authenticate('local', {
-	successRedirect: '/',
-	failureRedirect: '/'
-}));
-
+router.post('/', passport.authenticate('local'), (req, res) => {
+  res.status(200).json(req.user);
+});
 
 module.exports = router;

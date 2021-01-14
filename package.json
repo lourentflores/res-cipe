@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/res-cipe/res-cipe#readme",
   "dependencies": {
+    "@chakra-ui/icons": "^1.0.3",
     "@chakra-ui/react": "^1.0.3",
     "@emotion/react": "^11.1.2",
     "@emotion/styled": "^11.0.0",

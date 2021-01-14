@@ -130,81 +130,81 @@ export default function Signup({ isOpen, onClose }) {
         >
           {(props) => (
             <Form>
-              <Field name="username">
+              <Field name='username'>
                 {({ field, form }) => (
                   <FormControl
                     isInvalid={form.errors.username && form.touched.username}
                   >
-                    <FormLabel htmlFor="username">Username</FormLabel>
+                    <FormLabel htmlFor='username'>Username</FormLabel>
                     <Input
                       {...field}
-                      id="username"
-                      placeholder="4 to 15 characters"
-                      required="true"
+                      id='username'
+                      placeholder='4 to 15 characters'
+                      required='true'
                     />
                     <FormErrorMessage>{form.errors.username}</FormErrorMessage>
                   </FormControl>
                 )}
               </Field>
-              <Field name="email">
+              <Field name='email'>
                 {({ field, form }) => (
                   <FormControl
                     isInvalid={form.errors.email && form.touched.email}
                   >
-                    <FormLabel htmlFor="email">Email Address</FormLabel>
+                    <FormLabel htmlFor='email'>Email Address</FormLabel>
                     <Input
                       {...field}
-                      id="email"
-                      placeholder="email"
-                      required="true"
+                      id='email'
+                      placeholder='email'
+                      required='true'
                     />
                     <FormErrorMessage>{form.errors.email}</FormErrorMessage>
                   </FormControl>
                 )}
               </Field>
-              <Field name="firstName">
+              <Field name='firstName'>
                 {({ field, form }) => (
                   <FormControl
                     isInvalid={form.errors.firstName && form.touched.firstName}
                   >
-                    <FormLabel htmlFor="firstName">First Name</FormLabel>
+                    <FormLabel htmlFor='firstName'>First Name</FormLabel>
                     <Input
                       {...field}
-                      id="firstName"
-                      placeholder="required"
-                      required="true"
+                      id='firstName'
+                      placeholder='required'
+                      required='true'
                     />
                     <FormErrorMessage>{form.errors.firstName}</FormErrorMessage>
                   </FormControl>
                 )}
               </Field>
-              <Field name="lastName">
+              <Field name='lastName'>
                 {({ field, form }) => (
                   <FormControl
                     isInvalid={form.errors.lastName && form.touched.lastName}
                   >
-                    <FormLabel htmlFor="lastName">Last Name</FormLabel>
-                    <Input {...field} id="lastName" placeholder="required" />
+                    <FormLabel htmlFor='lastName'>Last Name</FormLabel>
+                    <Input {...field} id='lastName' placeholder='required' />
                     <FormErrorMessage>{form.errors.lastName}</FormErrorMessage>
                   </FormControl>
                 )}
               </Field>
-              <Field name="password">
+              <Field name='password'>
                 {({ field, form }) => (
                   <FormControl
                     isInvalid={form.errors.password && form.touched.password}
                   >
-                    <FormLabel htmlFor="password">Password</FormLabel>
+                    <FormLabel htmlFor='password'>Password</FormLabel>
                     <InputGroup>
                       <Input
                         {...field}
-                        id="password"
-                        required="true"
+                        id='password'
+                        required='true'
                         type={showPass ? 'text' : 'password'}
-                        placeholder="must include one lowercase character, one uppercase character, a number, and a special character"
+                        placeholder='must include one lowercase character, one uppercase character, a number, and a special character'
                       />
-                      <InputRightElement width="4.5rem">
-                        <Button h="1.75rem" size="sm" onClick={clickPass}>
+                      <InputRightElement width='4.5rem'>
+                        <Button h='1.75rem' size='sm' onClick={clickPass}>
                           {showPass ? 'Hide' : 'Show'}
                         </Button>
                       </InputRightElement>
@@ -213,26 +213,26 @@ export default function Signup({ isOpen, onClose }) {
                   </FormControl>
                 )}
               </Field>
-              <Field name="passwordMatch">
+              <Field name='passwordMatch'>
                 {({ field, form }) => (
                   <FormControl
                     isInvalid={
                       form.errors.passwordMatch && form.touched.passwordMatch
                     }
                   >
-                    <FormLabel htmlFor="passwordMatch">
+                    <FormLabel htmlFor='passwordMatch'>
                       Confirm Password
                     </FormLabel>
                     <InputGroup>
                       <Input
                         {...field}
-                        id="passwordMatch"
-                        required="true"
+                        id='passwordMatch'
+                        required='true'
                         type={showConf ? 'text' : 'password'}
-                        placeholder="Make sure she matches!"
+                        placeholder='Make sure she matches!'
                       />
-                      <InputRightElement width="4.5rem">
-                        <Button h="1.75rem" size="sm" onClick={clickConf}>
+                      <InputRightElement width='4.5rem'>
+                        <Button h='1.75rem' size='sm' onClick={clickConf}>
                           {showConf ? 'Hide' : 'Show'}
                         </Button>
                       </InputRightElement>
@@ -245,9 +245,9 @@ export default function Signup({ isOpen, onClose }) {
               </Field>
               <Button
                 mt={4}
-                colorScheme="teal"
+                colorScheme='teal'
                 isLoading={props.isSubmitting}
-                type="submit"
+                type='submit'
               >
                 Submit
               </Button>

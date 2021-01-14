@@ -8,7 +8,7 @@ const saltRounds = 10;
 const userController = {};
 
 userController.newUser = (req, res, next) => {
-  console.log('inside userController')
+  console.log('inside userController');
   const { username, password, email, firstName, lastName } = req.body;
   req.checkBody('username', 'Username field cannot be empty.').notEmpty();
   req

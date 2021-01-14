@@ -4,7 +4,7 @@ const dashController = {};
 
 dashController.getResumes = async (req, res, next) => {
   const { id } = req.params;
-  const resumeQuery = `SELECT * FROM resume_table WHERE user_id = $1`;
+  const resumeQuery = `SELECT * FROM resume_table WHERE user_id = $1 ORDER BY id`;
 
   try {
     const data = await db.query(resumeQuery, [id]);
@@ -20,7 +20,7 @@ dashController.getResumes = async (req, res, next) => {
 
 dashController.getApplications = async (req, res, next) => {
   const { id } = req.params;
-  const applicationQuery = `SELECT app.*, res.res_name FROM application_table AS app LEFT OUTER JOIN resume_table AS res ON app.resume_id = res.id WHERE app.user_id = $1`;
+  const applicationQuery = `SELECT app.*, res.res_name FROM application_table AS app LEFT OUTER JOIN resume_table AS res ON app.resume_id = res.id WHERE app.user_id = $1 ORDER BY id`;
 
   try {
     const data = await db.query(applicationQuery, [id]);

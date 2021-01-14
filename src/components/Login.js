@@ -3,7 +3,6 @@ import { Formik, Form, Field } from 'formik';
 import {
   Box,
   FormControl,
-  FormLabel,
   Input,
   InputGroup,
   InputRightElement,
@@ -13,7 +12,7 @@ import {
 } from '@chakra-ui/react';
 import Signup from './Signup';
 
-export default function Login({ setIsLoggedIn }) {
+export default function Login({ setState }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [showPass, setShow] = useState(false);
   const clickPass = () => setShow(!showPass);
@@ -38,28 +37,27 @@ export default function Login({ setIsLoggedIn }) {
         }}
         onSubmit={(values, actions) => {
           const { username, password } = values;
-          // setTimeout(() => {
-          alert(
-            JSON.stringify(
-              {
-                username,
-                password,
-              },
-              null,
-              2
-            )
-          );
-          actions.setSubmitting(false);
-          // double check the endpoint, make sure the fetch request is built proper
-          // fetch('/login', {
-          //   method: 'POST',
-          //   headers: { 'Content-Type': 'application/json' },
-          //   body: JSON.stringify({
-          //     username,
-          //     password,
-          //   }),
-          // }).then((res) => res.json());
-          // }, 1000);
+          fetch('/login', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              username,
+              password,
+            }),
+          })
+            .then((response) => {
+              if (response.ok) {
+                return response.json();
+              }
+              throw new Error(`${response.status} ${response.statusText}`);
+            })
+            .then((data) => {
+              if (data.userId) {
+                actions.setSubmitting(false);
+                setState({ userId: data.userId, isLoggedIn: true });
+              }
+            })
+            .catch((err) => console.log(err));
         }}
       >
         {(props) => (
@@ -73,7 +71,7 @@ export default function Login({ setIsLoggedIn }) {
                     {...field}
                     id="username"
                     placeholder="Username"
-                    required="true"
+                    required
                   />
                   <FormErrorMessage>{form.errors.username}</FormErrorMessage>
                 </FormControl>
@@ -89,7 +87,7 @@ export default function Login({ setIsLoggedIn }) {
                     <Input
                       {...field}
                       id="password"
-                      required="true"
+                      required
                       type={showPass ? 'text' : 'password'}
                       placeholder="Password"
                     />

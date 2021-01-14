@@ -18,6 +18,7 @@ module.exports = {
     },
     publicPath: '/build',
   },
+  devtool: 'eval-cheap-source-map',
   module: {
     rules: [
       {
