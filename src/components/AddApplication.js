@@ -85,45 +85,48 @@ export default function AddApplication({
           >
             {(props) => (
               <Form>
-                <Field name='companyName'>
+                <Field name="companyName">
                   {({ field, form }) => (
                     <FormControl
                       isInvalid={form.errors.name && form.touched.name}
                     >
                       <Input
                         {...field}
-                        id='companyName'
-                        placeholder='Company Name'
+                        id="companyName"
+                        placeholder="Company Name"
+                        key="company-input"
                       />
                       <FormErrorMessage>{form.errors.name}</FormErrorMessage>
                     </FormControl>
                   )}
                 </Field>
 
-                <Field name='jobLink'>
+                <Field name="jobLink">
                   {({ field, form }) => (
                     <FormControl
                       isInvalid={form.errors.name && form.touched.name}
                     >
                       <Input
                         {...field}
-                        id='jobLink'
-                        placeholder='Link to job posting'
+                        id="jobLink"
+                        placeholder="Link to job posting"
+                        key="job-link"
                       />
                       <FormErrorMessage>{form.errors.name}</FormErrorMessage>
                     </FormControl>
                   )}
                 </Field>
 
-                <Field name='resume'>
+                <Field name="resume">
                   {({ field, form }) => (
                     <FormControl
                       isInvalid={form.errors.name && form.touched.name}
                     >
                       <Select
-                        placeholder='Choose a resumé...'
-                        id='resume'
+                        placeholder="Choose a resumé..."
+                        id="resume"
                         onChange={(e) => getResumeId(e.target.value)}
+                        key="resume-select"
                       >
                         {resumeOptions}
                       </Select>
@@ -132,12 +135,16 @@ export default function AddApplication({
                   )}
                 </Field>
 
-                <Field name='techstack'>
+                <Field name="techstack">
                   {({ field, form }) => (
                     <FormControl
                       isInvalid={form.errors.name && form.touched.name}
                     >
-                      <Textarea placeholder='Tech Stack' id='techstack' />
+                      <Textarea
+                        placeholder="Tech Stack"
+                        id="techstack"
+                        key="tech-stack"
+                      />
                       <FormErrorMessage>{form.errors.name}</FormErrorMessage>
                     </FormControl>
                   )}
@@ -145,9 +152,9 @@ export default function AddApplication({
 
                 <Button
                   mt={4}
-                  colorScheme='teal'
+                  colorScheme="teal"
                   isLoading={props.isSubmitting}
-                  type='submit'
+                  type="submit"
                 >
                   Submit
                 </Button>

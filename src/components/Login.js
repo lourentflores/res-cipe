@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Formik, Form, Field } from 'formik';
 import {
   Box,
+  Center,
   FormControl,
   Input,
   InputGroup,
@@ -62,59 +63,61 @@ export default function Login({ setState }) {
       >
         {(props) => (
           <Form>
-            <Field name="username">
-              {({ field, form }) => (
-                <FormControl
-                  isInvalid={form.errors.username && form.touched.username}
-                >
-                  <Input
-                    {...field}
-                    id="username"
-                    placeholder="Username"
-                    required
-                  />
-                  <FormErrorMessage>{form.errors.username}</FormErrorMessage>
-                </FormControl>
-              )}
-            </Field>
-
-            <Field name="password">
-              {({ field, form }) => (
-                <FormControl
-                  isInvalid={form.errors.password && form.touched.password}
-                >
-                  <InputGroup>
+            <Center flexDirection="column">
+              <Field name="username">
+                {({ field, form }) => (
+                  <FormControl
+                    isInvalid={form.errors.username && form.touched.username}
+                  >
                     <Input
                       {...field}
-                      id="password"
+                      id="username"
+                      placeholder="Username"
                       required
-                      type={showPass ? 'text' : 'password'}
-                      placeholder="Password"
                     />
-                    <InputRightElement width="4.5rem">
-                      <Button h="1.75rem" size="sm" onClick={clickPass}>
-                        {showPass ? 'Hide' : 'Show'}
-                      </Button>
-                    </InputRightElement>
-                  </InputGroup>
-                  <FormErrorMessage>{form.errors.password}</FormErrorMessage>
-                </FormControl>
-              )}
-            </Field>
+                    <FormErrorMessage>{form.errors.username}</FormErrorMessage>
+                  </FormControl>
+                )}
+              </Field>
 
-            <Button
-              mt={4}
-              colorScheme="teal"
-              isLoading={props.isSubmitting}
-              type="submit"
-            >
-              Login
-            </Button>
+              <Field name="password">
+                {({ field, form }) => (
+                  <FormControl
+                    isInvalid={form.errors.password && form.touched.password}
+                  >
+                    <InputGroup>
+                      <Input
+                        {...field}
+                        id="password"
+                        required
+                        type={showPass ? 'text' : 'password'}
+                        placeholder="Password"
+                      />
+                      <InputRightElement width="4.5rem">
+                        <Button h="1.75rem" size="sm" onClick={clickPass}>
+                          {showPass ? 'Hide' : 'Show'}
+                        </Button>
+                      </InputRightElement>
+                    </InputGroup>
+                    <FormErrorMessage>{form.errors.password}</FormErrorMessage>
+                  </FormControl>
+                )}
+              </Field>
+
+              <Button
+                mt={4}
+                colorScheme="purple"
+                isLoading={props.isSubmitting}
+                type="submit"
+              >
+                Login
+              </Button>
+            </Center>
           </Form>
         )}
       </Formik>
-      <Button onClick={onOpen}>Signup</Button>
-      <Signup isOpen={isOpen} onClose={onClose} />
+      {/* <Button onClick={onOpen}>Signup</Button>
+      <Signup isOpen={isOpen} onClose={onClose} /> */}
     </Box>
   );
 }

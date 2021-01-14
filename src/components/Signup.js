@@ -7,6 +7,7 @@ import {
   InputGroup,
   InputRightElement,
   Button,
+  Center,
   FormErrorMessage,
   ModalContent,
   Modal,
@@ -130,127 +131,139 @@ export default function Signup({ isOpen, onClose }) {
         >
           {(props) => (
             <Form>
-              <Field name='username'>
-                {({ field, form }) => (
-                  <FormControl
-                    isInvalid={form.errors.username && form.touched.username}
-                  >
-                    <FormLabel htmlFor='username'>Username</FormLabel>
-                    <Input
-                      {...field}
-                      id='username'
-                      placeholder='4 to 15 characters'
-                      required='true'
-                    />
-                    <FormErrorMessage>{form.errors.username}</FormErrorMessage>
-                  </FormControl>
-                )}
-              </Field>
-              <Field name='email'>
-                {({ field, form }) => (
-                  <FormControl
-                    isInvalid={form.errors.email && form.touched.email}
-                  >
-                    <FormLabel htmlFor='email'>Email Address</FormLabel>
-                    <Input
-                      {...field}
-                      id='email'
-                      placeholder='email'
-                      required='true'
-                    />
-                    <FormErrorMessage>{form.errors.email}</FormErrorMessage>
-                  </FormControl>
-                )}
-              </Field>
-              <Field name='firstName'>
-                {({ field, form }) => (
-                  <FormControl
-                    isInvalid={form.errors.firstName && form.touched.firstName}
-                  >
-                    <FormLabel htmlFor='firstName'>First Name</FormLabel>
-                    <Input
-                      {...field}
-                      id='firstName'
-                      placeholder='required'
-                      required='true'
-                    />
-                    <FormErrorMessage>{form.errors.firstName}</FormErrorMessage>
-                  </FormControl>
-                )}
-              </Field>
-              <Field name='lastName'>
-                {({ field, form }) => (
-                  <FormControl
-                    isInvalid={form.errors.lastName && form.touched.lastName}
-                  >
-                    <FormLabel htmlFor='lastName'>Last Name</FormLabel>
-                    <Input {...field} id='lastName' placeholder='required' />
-                    <FormErrorMessage>{form.errors.lastName}</FormErrorMessage>
-                  </FormControl>
-                )}
-              </Field>
-              <Field name='password'>
-                {({ field, form }) => (
-                  <FormControl
-                    isInvalid={form.errors.password && form.touched.password}
-                  >
-                    <FormLabel htmlFor='password'>Password</FormLabel>
-                    <InputGroup>
+              <Center padding="1rem" flexDirection="column">
+                <Field name="username">
+                  {({ field, form }) => (
+                    <FormControl
+                      isInvalid={form.errors.username && form.touched.username}
+                    >
+                      <FormLabel htmlFor="username">Username</FormLabel>
                       <Input
                         {...field}
-                        id='password'
-                        required='true'
-                        type={showPass ? 'text' : 'password'}
-                        placeholder='must include one lowercase character, one uppercase character, a number, and a special character'
+                        id="username"
+                        placeholder="4 to 15 characters"
+                        required
                       />
-                      <InputRightElement width='4.5rem'>
-                        <Button h='1.75rem' size='sm' onClick={clickPass}>
-                          {showPass ? 'Hide' : 'Show'}
-                        </Button>
-                      </InputRightElement>
-                    </InputGroup>
-                    <FormErrorMessage>{form.errors.password}</FormErrorMessage>
-                  </FormControl>
-                )}
-              </Field>
-              <Field name='passwordMatch'>
-                {({ field, form }) => (
-                  <FormControl
-                    isInvalid={
-                      form.errors.passwordMatch && form.touched.passwordMatch
-                    }
-                  >
-                    <FormLabel htmlFor='passwordMatch'>
-                      Confirm Password
-                    </FormLabel>
-                    <InputGroup>
+                      <FormErrorMessage>
+                        {form.errors.username}
+                      </FormErrorMessage>
+                    </FormControl>
+                  )}
+                </Field>
+                <Field name="email">
+                  {({ field, form }) => (
+                    <FormControl
+                      isInvalid={form.errors.email && form.touched.email}
+                    >
+                      <FormLabel htmlFor="email">Email Address</FormLabel>
                       <Input
                         {...field}
-                        id='passwordMatch'
-                        required='true'
-                        type={showConf ? 'text' : 'password'}
-                        placeholder='Make sure she matches!'
+                        id="email"
+                        placeholder="email"
+                        required
                       />
-                      <InputRightElement width='4.5rem'>
-                        <Button h='1.75rem' size='sm' onClick={clickConf}>
-                          {showConf ? 'Hide' : 'Show'}
-                        </Button>
-                      </InputRightElement>
-                    </InputGroup>
-                    <FormErrorMessage>
-                      {form.errors.passwordMatch}
-                    </FormErrorMessage>
-                  </FormControl>
-                )}
-              </Field>
-              <Button
-                mt={4}
-                colorScheme='teal'
-                isLoading={props.isSubmitting}
-                type='submit'
-              >
-                Submit
-              </Button>
+                      <FormErrorMessage>{form.errors.email}</FormErrorMessage>
+                    </FormControl>
+                  )}
+                </Field>
+                <Field name="firstName">
+                  {({ field, form }) => (
+                    <FormControl
+                      isInvalid={
+                        form.errors.firstName && form.touched.firstName
+                      }
+                    >
+                      <FormLabel htmlFor="firstName">First Name</FormLabel>
+                      <Input
+                        {...field}
+                        id="firstName"
+                        placeholder="required"
+                        required
+                      />
+                      <FormErrorMessage>
+                        {form.errors.firstName}
+                      </FormErrorMessage>
+                    </FormControl>
+                  )}
+                </Field>
+                <Field name="lastName">
+                  {({ field, form }) => (
+                    <FormControl
+                      isInvalid={form.errors.lastName && form.touched.lastName}
+                    >
+                      <FormLabel htmlFor="lastName">Last Name</FormLabel>
+                      <Input {...field} id="lastName" placeholder="required" />
+                      <FormErrorMessage>
+                        {form.errors.lastName}
+                      </FormErrorMessage>
+                    </FormControl>
+                  )}
+                </Field>
+                <Field name="password">
+                  {({ field, form }) => (
+                    <FormControl
+                      isInvalid={form.errors.password && form.touched.password}
+                    >
+                      <FormLabel htmlFor="password">Password</FormLabel>
+                      <InputGroup>
+                        <Input
+                          {...field}
+                          id="password"
+                          required
+                          type={showPass ? 'text' : 'password'}
+                          placeholder="must include one lowercase character, one uppercase character, a number, and a special character"
+                        />
+                        <InputRightElement width="4.5rem">
+                          <Button h="1.75rem" size="sm" onClick={clickPass}>
+                            {showPass ? 'Hide' : 'Show'}
+                          </Button>
+                        </InputRightElement>
+                      </InputGroup>
+                      <FormErrorMessage>
+                        {form.errors.password}
+                      </FormErrorMessage>
+                    </FormControl>
+                  )}
+                </Field>
+                <Field name="passwordMatch">
+                  {({ field, form }) => (
+                    <FormControl
+                      isInvalid={
+                        form.errors.passwordMatch && form.touched.passwordMatch
+                      }
+                    >
+                      <FormLabel htmlFor="passwordMatch">
+                        Confirm Password
+                      </FormLabel>
+                      <InputGroup>
+                        <Input
+                          {...field}
+                          id="passwordMatch"
+                          required
+                          type={showConf ? 'text' : 'password'}
+                          placeholder="Make sure she matches!"
+                        />
+                        <InputRightElement width="4.5rem">
+                          <Button h="1.75rem" size="sm" onClick={clickConf}>
+                            {showConf ? 'Hide' : 'Show'}
+                          </Button>
+                        </InputRightElement>
+                      </InputGroup>
+                      <FormErrorMessage>
+                        {form.errors.passwordMatch}
+                      </FormErrorMessage>
+                    </FormControl>
+                  )}
+                </Field>
+                <Button
+                  mt={4}
+                  colorScheme="purple"
+                  isLoading={props.isSubmitting}
+                  type="submit"
+                >
+                  Submit
+                </Button>
+              </Center>
             </Form>
           )}
         </Formik>
