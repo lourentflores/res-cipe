@@ -11,6 +11,7 @@ import {
   Flex,
   Spacer,
   Heading,
+  WrapItem,
 } from '@chakra-ui/react';
 import { StarIcon, DeleteIcon } from '@chakra-ui/icons';
 
@@ -55,10 +56,15 @@ export default function ApplicationCard(props) {
   }
 
   return (
-    <Box bg="gray.50" boxShadow="base" maxW='sm' borderWidth='1px' borderRadius='lg' overflow='hidden'>
-      {/* <Image src={props.imageUrl} alt={props.imageAlt} /> */}
-
-      <Box p='6' padding='1rem' flexDirection='row' minWidth="300px">
+    <Box
+      bg='gray.50'
+      boxShadow='base'
+      maxW='sm'
+      borderWidth='1px'
+      borderRadius='lg'
+      overflow='hidden'
+    >
+      <Box p='6' padding='1rem' flexDirection='row' minWidth='300px'>
         <Flex
           mt='1'
           fontWeight='semibold'
