@@ -3,12 +3,15 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "homepage": "https://lourentflores.github.io/res-cipe",
   "scripts": {
     "comment-2": "NODE_ENV=production nodemon server/server.js",
     "start": "cross-env NODE_ENV=production nodemon server/server.js",
     "build": "NODE_ENV=production webpack",
     "dev": "cross-env NODE_ENV=development concurrently \"nodemon server/server.js\" \"webpack-dev-server --hot\"",
-    "test": "jest --watchAll"
+    "test": "jest --watchAll",
+    "predeploy": "yarn build",
+    "deploy": "gh-pages -d build"
   },
   "repository": {
     "type": "git",
@@ -20,13 +23,12 @@
   "bugs": {
     "url": "https://github.com/res-cipe/res-cipe"
   },
-  "homepage": "https://github.com/res-cipe/res-cipe#readme",
   "dependencies": {
     "@chakra-ui/icons": "^1.0.3",
     "@chakra-ui/react": "^1.0.3",
     "@emotion/react": "^11.1.2",
     "@emotion/styled": "^11.0.0",
-    "bcrypt": "^5.0.0",
+    "bcryptjs": "^2.4.3",
     "connect-pg-simple": "^6.2.1",
     "cookie": "^0.4.1",
     "cookie-parser": "^1.4.5",
@@ -37,6 +39,7 @@
     "express-validator": "^5.3.1",
     "formik": "^2.2.6",
     "framer-motion": "^3.2.1",
+    "gh-pages": "^3.1.0",
     "passport": "^0.4.1",
     "passport-facebook": "^3.0.0",
     "passport-google-oauth20": "^2.0.0",

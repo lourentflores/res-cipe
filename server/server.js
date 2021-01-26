@@ -14,7 +14,7 @@ const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const pgSession = require('connect-pg-simple')(session);
 const LocalStrategy = require('passport-local').Strategy;
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 
 // routers
 const dashRouter = require('./routes/dashRouter');
@@ -62,7 +62,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // serve static assets
-app.use(express.static(path.resolve(__dirname + '../assets')));
+app.use(express.static(path.resolve(__dirname,'../assets')));
 
 // router for user login
 app.use('/login', loginRouter);

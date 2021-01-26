@@ -91,7 +91,7 @@ export default function Dashboard({ userId }) {
         <Heading mt='2'>
           <Image
             id='logo'
-            src='../../assets/rescipelogo.png'
+            src='/rescipelogo.png'
             alt='Rescipe Logo'
             htmlWidth={1000}
           />
