@@ -62,7 +62,11 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // serve static assets
+<<<<<<< HEAD
 app.use(express.static(path.resolve(__dirname,'../assets')));
+=======
+app.use(express.static(path.resolve(__dirname, '../assets')));
+>>>>>>> def51b92aed030b5aa7a95aafeeecd6f093214c6
 
 // router for user login
 app.use('/login', loginRouter);
