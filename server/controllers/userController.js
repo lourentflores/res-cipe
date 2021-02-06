@@ -8,8 +8,9 @@ const saltRounds = 10;
 const userController = {};
 
 userController.newUser = (req, res, next) => {
-  console.log('inside userController');
   const { username, password, email, firstName, lastName } = req.body;
+
+  // backend validation of username, password, email, firstName and lastName before querying the database.
   req.checkBody('username', 'Username field cannot be empty.').notEmpty();
   req
     .checkBody('username', 'Username must be between 4-15 characters long.')
@@ -63,7 +64,6 @@ userController.newUser = (req, res, next) => {
   } else {
     bcrypt.hash(password, saltRounds, async (err, hash) => {
       // Store hash in your password DB.
-      console.log('inside bcrypt func');
       const queryStr =
         'INSERT INTO user_table (username, password, email, first_name, last_name) VALUES ($1, $2, $3, $4, $5) RETURNING id';
       const queryParams = [username, hash, email, firstName, lastName];
@@ -76,10 +76,8 @@ userController.newUser = (req, res, next) => {
             //passport login
             res.locals.id = id;
             return next();
-            // res.redirect('/');
           });
         });
-        // return next();
       } catch (error) {
         console.log('error from our db', error);
         return next({
@@ -91,14 +89,16 @@ userController.newUser = (req, res, next) => {
     });
   }
 };
+
+// Passport serialize user
 passport.serializeUser(function (id, done) {
   done(null, id);
 });
 
+// Passport deserialize user
+
 passport.deserializeUser(function (id, done) {
   done(null, id);
 });
-
-userController.login = (req, res, next) => {};
 
 module.exports = userController;

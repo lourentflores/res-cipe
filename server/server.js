@@ -33,11 +33,13 @@ app.use(expressValidator());
 // cookieParser middleware
 app.use(cookieParser());
 
-// creating new session cookies in db
+// serve static assets
+app.get('/assets/*', express.static(path.resolve(__dirname + '../assets')));
 
+// creating new session cookies in db
+// enter your connection string for your db
 const pgPool = new pg.Pool({
-  connectionString:
-    'postgres://yfopfigc:NdRchGgXUa0D2bkRE4haivaL7eXpn86w@ziggy.db.elephantsql.com:5432/yfopfigc',
+  connectionString: '',
 });
 
 // session middleware and storing session in db
